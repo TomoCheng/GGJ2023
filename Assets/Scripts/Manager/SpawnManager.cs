@@ -12,9 +12,9 @@ public class SpawnManager : Manager_Base
 	public Nutrition SpawnNutrition(Vector2 iPosition)
 	{
 		var aNutrition = Instantiate(Nutrition, Background);
+		var aLastID    = NutritionList.Count > 0 ? NutritionList[NutritionList.Count - 1].ID : 0;
+		aNutrition.Initialize(aLastID + 1, iPosition);
 		NutritionList.Add(aNutrition);
-		var aLast = NutritionList[NutritionList.Count - 1];
-		aNutrition.Initialize(aLast.ID + 1, iPosition);
 		return aNutrition;
 	}
 

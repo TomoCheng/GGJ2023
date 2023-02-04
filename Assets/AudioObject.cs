@@ -21,9 +21,9 @@ public class AudioObject : MonoBehaviour
 	}
 	private async UniTask WaitAudioPlay()
 	{
-		while (IsDestroy)
+		while (AudioSource.isPlaying)
 		{
-			if (AudioSource.isPlaying) { await UniTask.Yield(); }
+			await UniTask.Yield();
 		}
 		Destroy(this.gameObject);
 	}
