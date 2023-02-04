@@ -40,16 +40,27 @@ public class LineObj : MonoBehaviour
     {
         lineRenderer.positionCount++;
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, Pot);
-        //是否產生分枝
-        if (Random.Range(0, 11) == 0)
+        //能量減少
+        Line_Manager._.Power--;
+        //能量數否足夠
+        if (Line_Manager._.Power > 0)
         {
-            //分支末端座標
-            float rot = Vector2.SignedAngle(Vector2.right, LastPot - LastPot2) + (Random.Range(0, 2) * 2 - 1) * Random.Range(20, 46);
-            Vector2 NewPot = LastPot2 + new Vector3(Mathf.Cos(rot / 360 * 2 * Mathf.PI), Mathf.Sin(rot / 360 * 2 * Mathf.PI), 0);
-            //<產生新的分支物件>
+            //是否產生分枝
+            if (Random.Range(0, 11) == 0)
+            {
+                //分支末端座標
+                float rot = Vector2.SignedAngle(Vector2.right, LastPot - LastPot2) + (Random.Range(0, 2) * 2 - 1) * Random.Range(20, 46);
+                Vector2 NewPot = LastPot2 + new Vector3(Mathf.Cos(rot / 360 * 2 * Mathf.PI), Mathf.Sin(rot / 360 * 2 * Mathf.PI), 0);
+                //<產生新的分支物件>
+                Line_Manager._.CreatLine(LastPot2, NewPot);
+                Des();
+                Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot);
+            }
+        }
+        else
+        {
+            Line_Manager._.NowLine = null;
             Des();
-            Line_Manager._.CreatLine(LastPot2, NewPot);
-            Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot);
         }
     }
 
@@ -73,6 +84,7 @@ public class LineObj : MonoBehaviour
     {
         if (OnOff)
         {
+            Line_Manager._.Power = Random.Range(3, 21);
             Line_Manager._.NowLine = this;
         }
         else

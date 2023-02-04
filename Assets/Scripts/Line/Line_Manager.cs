@@ -29,6 +29,8 @@ public class Line_Manager : MonoBehaviour
     }
     public LineObj _NowLine;
 
+    public int Power = 10;
+
     private void Awake()
     {
         _ = this;
