@@ -8,6 +8,9 @@ public class GameSetting : MonoBehaviour
 	{
 		return FindObjectOfType<GameSetting>();
 	}
-
+	private void Awake()
+	{
+		ColorChartSetting.Initialize();
+	}
 	public ColorChartSetting ColorChartSetting;
 }

@@ -12,11 +12,15 @@ public class ColorChartSetting : ScriptableObject
 		public Color[] SpecialColor;
 		public Color[] Color;
 	}
-
+	public void Initialize()
+	{
+		RandomColorChartIndex = UnityEngine.Random.Range(0, colorChartList.Count);
+	}
 	public ColorChart GetColorChart()
 	{
-		return colorChartList[UnityEngine.Random.Range(0, colorChartList.Count - 1)];
+		return colorChartList[RandomColorChartIndex];
 	}
 
 	[SerializeField] private List<ColorChart> colorChartList;
+	private int RandomColorChartIndex;
 }

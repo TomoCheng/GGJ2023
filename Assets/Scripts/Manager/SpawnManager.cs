@@ -12,9 +12,9 @@ public class SpawnManager : Manager_Base
 	public Nutrition SpawnNutrition(Vector2 iPosition)
 	{
 		var aNutrition = Instantiate(Nutrition, Background);
+		var aLastID    = NutritionList.Count > 0 ? NutritionList[NutritionList.Count - 1].ID : 0;
+		aNutrition.Initialize(aLastID + 1, iPosition);
 		NutritionList.Add(aNutrition);
-		var aLast = NutritionList[NutritionList.Count - 1];
-		aNutrition.Initialize(aLast.ID, iPosition);
 		return aNutrition;
 	}
 
@@ -22,13 +22,14 @@ public class SpawnManager : Manager_Base
 	private void Update()
 	{
 		Tick += Time.deltaTime;
-		if (Tick > 1.0f)
+		if (Tick > SpawnPeriod)
 		{
-			SpawnNutrition(new Vector2(Random.Range(0, 1024), Random.Range(0, 1024)));
+			SpawnNutrition(new Vector2(Random.Range(-450, 450), Random.Range(-450, 450)));
 			Tick = 0;
 		}
 	}
 	private float Tick;
+	public float SpawnPeriod;
 	//Test
 
 	public Nutrition Nutrition;
