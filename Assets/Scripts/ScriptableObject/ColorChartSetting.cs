@@ -13,5 +13,10 @@ public class ColorChartSetting : ScriptableObject
 		public Color[] Color;
 	}
 
+	public ColorChart GetColorChart()
+	{
+		return colorChartList[UnityEngine.Random.Range(0, colorChartList.Count - 1)];
+	}
+
 	[SerializeField] private List<ColorChart> colorChartList;
 }

@@ -24,7 +24,7 @@ public class SpawnManager : Manager_Base
 		Tick += Time.deltaTime;
 		if (Tick > 1.0f)
 		{
-			SpawnNutrition(new Vector2(Random.Range(0, 1920), Random.Range(0, 1080)));
+			SpawnNutrition(new Vector2(Random.Range(0, 1024), Random.Range(0, 1024)));
 			Tick = 0;
 		}
 	}

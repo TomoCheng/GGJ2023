@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Nutrition : SpawnObject_Base
 {
 	public override void Initialize(int iID, Vector2 iPosition)
 	{
 		var aAudioObject = Instantiate(AudioObject);
-		aAudioObject.SetClip(SpawnSFX[Random.Range(0, SpawnSFX.Length)]);
+		aAudioObject.SetClip(SpawnSFX[Random.Range(0, SpawnSFX.Length - 1)]);
+		var aColorChart = GameSetting.GetInstance().ColorChartSetting.GetColorChart();
+		Image.color = aColorChart.Color[Random.Range(0, aColorChart.Color.Length - 1)];
 		LifeTime_Current = LifeTime_Max;
 		base.Initialize(iID, iPosition);
 	}
@@ -29,6 +32,7 @@ public class Nutrition : SpawnObject_Base
 		}
 	}
 
+	public Image       Image;
 	public AudioObject AudioObject;
 
 	public  float LifeTime_Max;

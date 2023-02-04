@@ -93,6 +93,7 @@ MonoBehaviour:
   RectTransform: {fileID: 5728587046685632952}
   ID: 0
   Animator: {fileID: 6528608517887584207}
+  Image: {fileID: 5728587046685632957}
   AudioObject: {fileID: 8829436265233056983, guid: c3067d95c58c6f74d9cf434df1910f59, type: 3}
   LifeTime_Max: 6
   SpawnSFX:
