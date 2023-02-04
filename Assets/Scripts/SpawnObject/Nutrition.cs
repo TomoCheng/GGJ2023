@@ -8,10 +8,12 @@ public class Nutrition : SpawnObject_Base
 	public override void Initialize(int iID, Vector2 iPosition)
 	{
 		var aAudioObject = Instantiate(AudioObject);
-		aAudioObject.SetClip(SpawnSFX[Random.Range(0, SpawnSFX.Length - 1)]);
+		aAudioObject.SetClip(SpawnSFX[Random.Range(0, SpawnSFX.Length)]);
 		var aColorChart = GameSetting.GetInstance().ColorChartSetting.GetColorChart();
-		Image.color = aColorChart.Color[Random.Range(0, aColorChart.Color.Length - 1)];
+		Image.color = aColorChart.Color[Random.Range(0, aColorChart.Color.Length)];
 		LifeTime_Current = LifeTime_Max;
+		float aRandomScale = Random.Range(1.0f, MaxRandomScale);
+		transform.localScale = new Vector3(aRandomScale, aRandomScale, aRandomScale);
 		base.Initialize(iID, iPosition);
 	}
 	public void SetSpeed()
@@ -40,4 +42,6 @@ public class Nutrition : SpawnObject_Base
 
 	public AudioClip[] SpawnSFX;
 	public AudioClip   DestroySFX;
+
+	public float MaxRandomScale = 1.5f;
 }
