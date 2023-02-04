@@ -43,9 +43,9 @@ public class LineObj : MonoBehaviour
                 float rot = Vector2.SignedAngle(Vector2.right, LastPot - LastPot2) + (Random.Range(0, 2) * 2 - 1) * Random.Range(20, 46);
                 Vector2 NewPot = LastPot2 + new Vector3(Mathf.Cos(rot / 360 * 2 * Mathf.PI), Mathf.Sin(rot / 360 * 2 * Mathf.PI), 0);
                 //<產生新的分支物件>
-                NewLines.Add(Line_Manager._.CreatLine(LastPot2, NewPot));
+                NewLines.Add(Line_Manager._.CreatLine(LastPot2, NewPot, lineRenderer.endColor));
                 Des();
-                NewLines.Add(Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot));
+                NewLines.Add(Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot, lineRenderer.endColor));
             }
         }
         else
@@ -93,4 +93,5 @@ public class LineObj : MonoBehaviour
             Line_Manager._.NowLine = null;
         }
     }
+
 }

@@ -71,13 +71,14 @@ public class Line_Manager : MonoBehaviour
         }
     }
 
-    public LineObj CreatLine(Vector2 from, Vector2 to)
+    public LineObj CreatLine(Vector2 from, Vector2 to, Color iStarColor)
     {
         LineObj r = Instantiate(LineObjPre, transform);
         r.transform.position = from;
         r.lineRenderer.positionCount = 2;
         r.lineRenderer.SetPosition(1, to);
-        return r;
+		r.lineRenderer.startColor = iStarColor;
+		return r;
     }
 
     public List<LineObj> GetAllLine()
