@@ -48,7 +48,14 @@ public class Line_Manager : MonoBehaviour
                 StartV3 = NowV3;
                 NowLine.AddNewPots(StartV3);
             }
+
+            //if (Input.GetKeyDown(KeyCode.A))
+            //{
+            //    NowLine = CreatLine(NowV3, NowV3);
+            //}
         }
+
+        
     }
 
     public LineObj CreatLine(Vector2 from, Vector2 to)

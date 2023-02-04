@@ -47,7 +47,9 @@ public class LineObj : MonoBehaviour
             float rot = Vector2.SignedAngle(Vector2.right, LastPot - LastPot2) + (Random.Range(0, 2) * 2 - 1) * Random.Range(20, 46);
             Vector2 NewPot = LastPot2 + new Vector3(Mathf.Cos(rot / 360 * 2 * Mathf.PI), Mathf.Sin(rot / 360 * 2 * Mathf.PI), 0);
             //<產生新的分支物件>
+            Des();
             Line_Manager._.CreatLine(LastPot2, NewPot);
+            Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot);
         }
     }
 
@@ -59,6 +61,12 @@ public class LineObj : MonoBehaviour
             lineObjs.Add(this);
             i.GetAllLine(lineObjs);
         }
+    }
+
+    // 自我封印變成不可能在生長的狀態
+    public void Des()
+    {
+        Button.gameObject.SetActive(false);
     }
 
     public void OnOffManager(bool OnOff)
