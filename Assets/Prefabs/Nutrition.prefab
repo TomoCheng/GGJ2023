@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 5728587046685632952}
   - component: {fileID: 5728587046685632956}
   - component: {fileID: 5728587046685632957}
-  - component: {fileID: 5728587046685632954}
   - component: {fileID: 5728587046685632955}
+  - component: {fileID: 8710346185733099785}
   m_Layer: 5
   m_Name: Nutrition
   m_TagString: Untagged
@@ -61,7 +61,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.53103435, g: 0.9622642, b: 0.43120328, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -78,21 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!111 &5728587046685632954
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5728587046685632953}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!114 &5728587046685632955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,4 +92,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 5728587046685632952}
   ID: 0
-  Animation: {fileID: 5728587046685632954}
+  Animation: {fileID: 0}
+--- !u!95 &8710346185733099785
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5728587046685632953}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6d55d455fdbbdea4c89202cc5123b167, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
