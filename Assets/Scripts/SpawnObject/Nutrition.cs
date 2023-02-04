@@ -6,6 +6,8 @@ public class Nutrition : SpawnObject_Base
 {
 	public override void Initialize(int iID, Vector2 iPosition)
 	{
+		var aAudioObject = Instantiate(AudioObject);
+		aAudioObject.SetClip(SpawnSFX[Random.Range(0, SpawnSFX.Length)]);
 		LifeTime_Current = LifeTime_Max;
 		base.Initialize(iID, iPosition);
 	}
@@ -22,9 +24,16 @@ public class Nutrition : SpawnObject_Base
 		if (LifeTime_Current <= 0)
 		{
 			Destroy(this.gameObject);
+			var aAudioObject = Instantiate(AudioObject);
+			aAudioObject.SetClip(DestroySFX);
 		}
 	}
 
+	public AudioObject AudioObject;
+
 	public  float LifeTime_Max;
 	private float LifeTime_Current;
+
+	public AudioClip[] SpawnSFX;
+	public AudioClip   DestroySFX;
 }

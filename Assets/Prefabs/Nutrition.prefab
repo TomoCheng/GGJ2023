@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5728587046685632956}
   - component: {fileID: 5728587046685632957}
   - component: {fileID: 5728587046685632955}
-  - component: {fileID: 8710346185733099785}
+  - component: {fileID: 6528608517887584207}
   m_Layer: 5
   m_Name: Nutrition
   m_TagString: Untagged
@@ -92,9 +92,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 5728587046685632952}
   ID: 0
-  Animator: {fileID: 8710346185733099785}
+  Animator: {fileID: 6528608517887584207}
+  AudioObject: {fileID: 8829436265233056983, guid: c3067d95c58c6f74d9cf434df1910f59, type: 3}
   LifeTime_Max: 6
---- !u!95 &8710346185733099785
+  SpawnSFX:
+  - {fileID: 8300000, guid: 96e8bedf9a74c154abc4374ad330c22b, type: 3}
+  - {fileID: 8300000, guid: 34a8d8f4ba904384a9c991a806a7ae82, type: 3}
+  - {fileID: 8300000, guid: a4217507af0373c4aa5d8c012218db6e, type: 3}
+  DestroySFX: {fileID: 8300000, guid: be5d13f618281114f87ea2ebf4884e74, type: 3}
+--- !u!95 &6528608517887584207
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
