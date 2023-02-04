@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/GameFlow.unity
+    guid: d9ea2aa3443caa34b9df97cd58d656e0
   m_configObjects: {}

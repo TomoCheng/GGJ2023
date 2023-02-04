@@ -19,31 +19,43 @@ public class Nutrition : SpawnObject_Base
 		Animator.speed       = 0.2f;
 		base.Initialize(iID, iPosition);
 	}
-	public void SetSpeed()
+	public void SetSpeed(float iSpeed)
 	{
-		Animator.speed = 0.4f - 0.3f * (LifeTime_Current / LifeTime_Max);
+		Animator.speed = iSpeed;
 	}
 	private void DestroyNutrition(bool iIsEat)
 	{
 		if (IsDestroy) { return; }
-		Destroy(this.gameObject);
+		SetSpeed(1.0f);
 		var aAudioObject = Instantiate(AudioObject);
 		aAudioObject.SetClip(iIsEat ? EatSFX : DestroySFX);
 		IsDestroy = true;
+		Animator.Play(iIsEat ? "Nutrition_Touched" : "Nutrition_Disappear");
+		//Destroy(this.gameObject);
 	}
 	private void Update()
 	{
-		if (!IsInitialize || IsDestroy) { return; }
+		if (!IsInitialize) { return; }
 
 		var aAnimatorinfo = Animator.GetCurrentAnimatorClipInfo(0);
 		Current_animation = aAnimatorinfo[0].clip.name;
-		if (Current_animation == "Nutrition_Loop")
+		if (!IsDestroy)
 		{
-			LifeTime_Current -= Time.deltaTime;
-			SetSpeed();
-			if (LifeTime_Current <= 0)
+			if (Current_animation == "Nutrition_Loop")
 			{
-				DestroyNutrition(false);
+				LifeTime_Current -= Time.deltaTime;
+				SetSpeed(0.4f - 0.3f * (LifeTime_Current / LifeTime_Max));
+				if (LifeTime_Current <= 0)
+				{
+					DestroyNutrition(false);
+				}
+			}
+		}
+		else
+		{
+			if (Current_animation == "Nutrition_Finish")
+			{
+				Destroy(this.gameObject);
 			}
 		}
 	}
