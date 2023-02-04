@@ -26,12 +26,6 @@ public class SpawnManager : Manager_Base
 		{
 			var aRandom = new System.Random();
 			SpawnNutrition(new Vector2(aRandom.Next(0, 1920), aRandom.Next(0, 1080)));
-			if (NutritionList.Count > 10)
-			{
-				var aNutrition = NutritionList[0];
-				NutritionList.Remove(aNutrition);
-				Destroy(aNutrition.gameObject);
-			}
 			Tick = 0;
 		}
 	}
