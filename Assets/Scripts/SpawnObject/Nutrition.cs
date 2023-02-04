@@ -28,7 +28,7 @@ public class Nutrition : SpawnObject_Base
 		if (IsDestroy) { return; }
 		Destroy(this.gameObject);
 		var aAudioObject = Instantiate(AudioObject);
-		aAudioObject.SetClip(DestroySFX);
+		aAudioObject.SetClip(iIsEat ? EatSFX : DestroySFX);
 		IsDestroy = true;
 	}
 	private void Update()
@@ -49,7 +49,8 @@ public class Nutrition : SpawnObject_Base
 	}
 	void OnTriggerEnter2D(Collider2D iCollision)
 	{
-		if (iCollision.gameObject.name.Contains("Line"))
+		Debug.LogWarning(iCollision.name);
+		if (iCollision.gameObject.name.Contains("Button"))
 		{
 			DestroyNutrition(true);
 		}
@@ -67,6 +68,7 @@ public class Nutrition : SpawnObject_Base
 
 	public AudioClip[] SpawnSFX;
 	public AudioClip   DestroySFX;
+	public AudioClip   EatSFX;
 
 	public float MaxRandomScale = 1.5f;
 }

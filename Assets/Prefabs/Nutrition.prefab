@@ -103,6 +103,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34a8d8f4ba904384a9c991a806a7ae82, type: 3}
   - {fileID: 8300000, guid: a4217507af0373c4aa5d8c012218db6e, type: 3}
   DestroySFX: {fileID: 8300000, guid: be5d13f618281114f87ea2ebf4884e74, type: 3}
+  EatSFX: {fileID: 8300000, guid: 8ea081eb5c4a06c48a983accc0ba4ea0, type: 3}
   MaxRandomScale: 1.5
 --- !u!95 &6528608517887584207
 Animator:
