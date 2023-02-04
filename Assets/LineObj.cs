@@ -71,7 +71,7 @@ public class LineObj : MonoBehaviour
 
     public void UpSize()
     {
-        float a = Mathf.Min(lineRenderer.widthCurve.keys[0].value + 0.1f, 0.5f);
+        float a = Mathf.Min(lineRenderer.widthCurve.keys[0].value + 0.06f, 0.35f);
         lineRenderer.widthCurve = AnimationCurve.Linear(0, a, 1, a - 0.1f);
     }
 
