@@ -5,33 +5,39 @@ using UnityEngine;
 public class LineObj : MonoBehaviour
 {
     public LineRenderer lineRenderer;
-    public List<Vector3> Pots;
-    // Start is called before the first frame update
+
+    //分支
+    public List<LineObj> NewLines;
+
     void Start()
     {
-        //Vector3[] v3s = new Vector3[100];
-        //Pots = new List<Vector3>();
-        //for (int i = 0; i < lineRenderer.GetPositions(v3s); i++)
-        //{
-        //    Pots.Add(v3s[i] - transform.position);
-        //}
+        NewLines = new List<LineObj>();
+
+        // 初始點為物件座標
         Vector3 v3 = transform.position + Vector3.zero;
         v3.z = 0;
         lineRenderer.SetPosition(0, v3);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddNewPots(Vector3 Pot)
     {
-        //if (Pots == null) return;
-        //lineRenderer.positionCount = Pots.Count;
-        //for (int i = 0; i < Pots.Count; i++)
-        //{
-        //    Vector3 v3 = Pots[i] + transform.position;
-        //    v3.z = 0;
-        //    lineRenderer.SetPosition(i, v3);
-        //}
-        //print(v3s.Length);
-        //lineRenderer.SetPositions(v3s);
+        lineRenderer.positionCount++;
+        lineRenderer.SetPosition(lineRenderer.positionCount - 1, Pot);
+        //是否產生分枝
+        if (Random.Range(0, 11) == 0)
+        {
+            //<分支末端座標>
+            //<產生新的分支物件>
+        }
+    }
+
+    //抓到底下所有的線分支
+    public void GetAllLine(List<LineObj> lineObjs)
+    {
+        foreach(var i in NewLines)
+        {
+            lineObjs.Add(this);
+            i.GetAllLine(lineObjs);
+        }
     }
 }
