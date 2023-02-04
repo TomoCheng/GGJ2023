@@ -1,6 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class AudioObject : MonoBehaviour
@@ -13,20 +14,22 @@ public class AudioObject : MonoBehaviour
 	{
 		AudioSource.clip = iClip;
 		AudioSource.Play();
-		WaitAudioPlay().Forget();
+		iTokenSource = new CancellationTokenSource();
+		WaitAudioPlay(iTokenSource.Token).Forget();
 	}
 	private void OnDestroy()
 	{
-		IsDestroy = true;
+		iTokenSource.Cancel();
 	}
-	private async UniTask WaitAudioPlay()
+	private async UniTask WaitAudioPlay(CancellationToken iToken = default)
 	{
 		while (AudioSource.isPlaying)
 		{
-			await UniTask.Yield();
+			await UniTask.Delay(1, false, 0, iToken);
 		}
 		Destroy(this.gameObject);
 	}
 	public AudioSource AudioSource;
-	public bool IsDestroy;
+
+	private CancellationTokenSource iTokenSource;
 }
