@@ -92,7 +92,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RectTransform: {fileID: 5728587046685632952}
   ID: 0
-  Animation: {fileID: 0}
+  Animator: {fileID: 8710346185733099785}
+  LifeTime_Max: 6
 --- !u!95 &8710346185733099785
 Animator:
   serializedVersion: 5

@@ -8,9 +8,12 @@ public class SpawnObject_Base : MonoBehaviour
 	{
 		ID = iID;
 		RectTransform.anchoredPosition = iPosition;
+		IsInitialize = true;
 	}
 	
 	public RectTransform RectTransform;
 	public int ID;
-	public Animation Animation;
+	public Animator Animator;
+
+	protected bool IsInitialize;
 }
