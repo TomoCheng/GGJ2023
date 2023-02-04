@@ -21,8 +21,7 @@ public class LineObj : MonoBehaviour
         v3.z = 0;
         lineRenderer.SetPosition(0, v3);
     }
-    public Vector2 test;
-    public Vector2 test2;
+
     private void Update()
     {
         Button.position = LastPot;
@@ -44,26 +43,36 @@ public class LineObj : MonoBehaviour
                 float rot = Vector2.SignedAngle(Vector2.right, LastPot - LastPot2) + (Random.Range(0, 2) * 2 - 1) * Random.Range(20, 46);
                 Vector2 NewPot = LastPot2 + new Vector3(Mathf.Cos(rot / 360 * 2 * Mathf.PI), Mathf.Sin(rot / 360 * 2 * Mathf.PI), 0);
                 //<產生新的分支物件>
-                Line_Manager._.CreatLine(LastPot2, NewPot);
+                NewLines.Add(Line_Manager._.CreatLine(LastPot2, NewPot));
                 Des();
-                Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot);
+                NewLines.Add(Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot));
             }
         }
         else
         {
             Line_Manager._.NowLine = null;
-            Des();
+            Line_Manager._.UpSizeAll();
+            //Des();
         }
     }
 
     //抓到底下所有的線分支
-    public void GetAllLine(List<LineObj> lineObjs)
+    public void GetAllLine(ref List<LineObj> lineObjs)
     {
-        foreach(var i in NewLines)
+        lineObjs.Add(this);
+        foreach (var i in NewLines)
         {
-            lineObjs.Add(this);
-            i.GetAllLine(lineObjs);
+            if (i.NewLines.Count != 0)
+            {
+                i.GetAllLine(ref lineObjs);
+            }
         }
+    }
+
+    public void UpSize()
+    {
+        float a = lineRenderer.widthCurve.keys[0].value + 0.1f;
+        lineRenderer.widthCurve = AnimationCurve.Linear(0, a, 1, a - 0.1f);
     }
 
     // 自我封印變成不可能在生長的狀態

@@ -52,11 +52,23 @@ public class Line_Manager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.A))
         {
-            MainLine.lineRenderer.widthCurve = AnimationCurve.Linear(0, 1, 1, 1);
-            print(MainLine.lineRenderer.widthCurve.keys[0].value);
+            var allLine = GetAllLine();
+            foreach (var i in allLine)
+            {
+                i.UpSize();
+            }
         }
 
 
+    }
+
+    public void UpSizeAll()
+    {
+        var allLine = GetAllLine();
+        foreach (var i in allLine)
+        {
+            i.UpSize();
+        }
     }
 
     public LineObj CreatLine(Vector2 from, Vector2 to)
@@ -71,7 +83,7 @@ public class Line_Manager : MonoBehaviour
     public List<LineObj> GetAllLine()
     {
         List<LineObj> r = new List<LineObj>();
-        MainLine.GetAllLine(r);
+        MainLine.GetAllLine(ref r);
 
         return r;
     }

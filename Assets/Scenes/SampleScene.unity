@@ -580,6 +580,7 @@ MonoBehaviour:
   MainLine: {fileID: 1415173325}
   StartV3: {x: 0, y: 0, z: 0}
   _NowLine: {fileID: 0}
+  Power: 10
 --- !u!1001 &7799299192746873509
 PrefabInstance:
   m_ObjectHideFlags: 0

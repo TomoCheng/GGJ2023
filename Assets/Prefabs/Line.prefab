@@ -193,8 +193,6 @@ MonoBehaviour:
   lineRenderer: {fileID: 7799299192512897601}
   Button: {fileID: 659681455}
   NewLines: []
-  test: {x: 0, y: 0}
-  test2: {x: 0, y: 0}
 --- !u!120 &7799299192512897601
 LineRenderer:
   serializedVersion: 2
@@ -247,7 +245,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.5098038
+        value: 0.2
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -256,7 +254,7 @@ LineRenderer:
         outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
-        value: 0.48039246
+        value: 0.1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
