@@ -21,11 +21,14 @@ public class SpawnManager : Manager_Base
 	//Test
 	private void Update()
 	{
-		Tick += Time.deltaTime;
-		if (Tick > SpawnPeriod)
+		if (GameManager.GetInstance().CurrentGameState == GameManager.GameState.GAME)
 		{
-			SpawnNutrition(new Vector2(Random.Range(-450, 450), Random.Range(-450, 450)));
-			Tick = 0;
+			Tick += Time.deltaTime;
+			if (Tick > SpawnPeriod)
+			{
+				SpawnNutrition(new Vector2(Random.Range(-450, 450), Random.Range(-450, 450)));
+				Tick = 0;
+			}
 		}
 	}
 	private float Tick;
