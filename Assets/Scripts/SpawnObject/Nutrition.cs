@@ -23,9 +23,17 @@ public class Nutrition : SpawnObject_Base
 	{
 		Animator.speed = 0.4f - 0.3f * (LifeTime_Current / LifeTime_Max);
 	}
+	private void DestroyNutrition(bool iIsEat)
+	{
+		if (IsDestroy) { return; }
+		Destroy(this.gameObject);
+		var aAudioObject = Instantiate(AudioObject);
+		aAudioObject.SetClip(DestroySFX);
+		IsDestroy = true;
+	}
 	private void Update()
 	{
-		if (!IsInitialize) { return; }
+		if (!IsInitialize || IsDestroy) { return; }
 
 		var aAnimatorinfo = Animator.GetCurrentAnimatorClipInfo(0);
 		Current_animation = aAnimatorinfo[0].clip.name;
@@ -35,13 +43,19 @@ public class Nutrition : SpawnObject_Base
 			SetSpeed();
 			if (LifeTime_Current <= 0)
 			{
-				Destroy(this.gameObject);
-				var aAudioObject = Instantiate(AudioObject);
-				aAudioObject.SetClip(DestroySFX);
+				DestroyNutrition(false);
 			}
 		}
-		
 	}
+	void OnTriggerEnter2D(Collider2D iCollision)
+	{
+		if (iCollision.gameObject.name.Contains("Line"))
+		{
+			DestroyNutrition(true);
+		}
+	}
+
+
 
 	public Image       Image;
 	public AudioObject AudioObject;
@@ -49,6 +63,7 @@ public class Nutrition : SpawnObject_Base
 	public  float  LifeTime_Max;
 	private float  LifeTime_Current;
 	private string Current_animation;
+	private bool   IsDestroy;
 
 	public AudioClip[] SpawnSFX;
 	public AudioClip   DestroySFX;
