@@ -26,14 +26,6 @@ public class LineObj : MonoBehaviour
     private void Update()
     {
         Button.position = LastPot;
-
-        ////test
-        //if (lineRenderer.positionCount > 1)
-        //{
-        //    float rot = Vector2.SignedAngle(Vector2.right, LastPot - LastPot2);
-        //    rot += (Random.Range(0, 2) * 2 - 1) * Random.Range(20, 46);
-        //    Button.position = LastPot2 + new Vector3(Mathf.Cos(rot / 360 * 2 * Mathf.PI), Mathf.Sin(rot / 360 * 2 * Mathf.PI), 0);
-        //}
     }
 
     public void AddNewPots(Vector3 Pot)

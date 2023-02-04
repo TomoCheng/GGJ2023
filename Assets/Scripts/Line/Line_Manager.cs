@@ -18,12 +18,10 @@ public class Line_Manager : MonoBehaviour
         get => _NowLine;
         set
         {
-            //if (_NowLine != null) _NowLine.GetComponent<Image>().raycastTarget = false;
             _NowLine = value;
             if (_NowLine != null)
             {
                 StartV3 = NowLine.lineRenderer.GetPosition(NowLine.lineRenderer.positionCount - 1);
-                //_NowLine.GetComponent<Image>().raycastTarget = true;
             }
         }
     }
@@ -51,13 +49,14 @@ public class Line_Manager : MonoBehaviour
                 NowLine.AddNewPots(StartV3);
             }
 
-            //if (Input.GetKeyDown(KeyCode.A))
-            //{
-            //    NowLine = CreatLine(NowV3, NowV3);
-            //}
+        }
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            MainLine.lineRenderer.widthCurve = AnimationCurve.Linear(0, 1, 1, 1);
+            print(MainLine.lineRenderer.widthCurve.keys[0].value);
         }
 
-        
+
     }
 
     public LineObj CreatLine(Vector2 from, Vector2 to)
