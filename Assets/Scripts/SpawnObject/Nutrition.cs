@@ -41,8 +41,11 @@ public class Nutrition : SpawnObject_Base
 		{
 			var aAudioObject = Instantiate(AudioObject);
 			aAudioObject.SetClip(iIsEat ? EatSFX : DestroySFX);
-			var an = GameObject.Find("Image_Ink_Value_Fadeout").GetComponent<Animator>();
-			an.Play("Ink_Fadeout");
+			if (iIsEat)
+			{
+				var an = GameObject.Find("Image_Ink_Value_Fadeout").GetComponent<Animator>();
+				an.Play("Ink_Fadeout");
+			}
 		}
 		//Destroy(this.gameObject);
 	}
