@@ -26,16 +26,16 @@ public class Nutrition : SpawnObject_Base
 		Animator.speed = iSpeed;
 	}
 	public Special Special;
-	private void DestroyNutrition(bool iIsEat)
+	public void DestroyNutrition(bool iIsEat)
 	{
 		if (IsDestroy) { return; }
 		SetSpeed(1.0f);
 		IsDestroy = true;
 		Animator.Play(iIsEat ? "Nutrition_Touched" : "Nutrition_Disappear");
-		if (IsSpecial)
+		if (IsSpecial && iIsEat)
 		{
 			GameManager.GetInstance().BGM_Dog.Play();
-			Instantiate(Special, GameManager.GetInstance().Canvas).SetColor(Image.color);
+			Instantiate(Special, GameManager.GetInstance().Canvas).SetColor(CollisionLineObj.LastEndColor);
 		}
 		else
 		{
@@ -72,14 +72,15 @@ public class Nutrition : SpawnObject_Base
 			}
 		}
 	}
-	void OnTriggerEnter2D(Collider2D iCollision)
+	/*void OnTriggerEnter2D(Collider2D iCollision)
 	{
 		Debug.LogWarning(iCollision.name);
 		if (iCollision.gameObject.name.Contains("Button"))
 		{
+			CollisionLineObj = iCollision.GetComponent<LineObj>();
 			DestroyNutrition(true);
 		}
-	}
+	}*/
 
 
 
@@ -98,4 +99,5 @@ public class Nutrition : SpawnObject_Base
 	public float MaxRandomScale = 1.5f;
 
 	public bool IsSpecial;
+	public LineObj CollisionLineObj;
 }

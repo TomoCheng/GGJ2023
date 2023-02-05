@@ -112,6 +112,7 @@ public class Line_Manager : MonoBehaviour
 	}
 
 	public Image Image_Ink_Value;
+	public Image Image_Ink_Fade_Value;
 	public Image Image_brush_mask;
 	public Animator Animator_Brush;
 }

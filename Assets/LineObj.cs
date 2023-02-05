@@ -105,11 +105,14 @@ public class LineObj : MonoBehaviour
 	public Transform Tongue;
 	public void ChangeColor(Color iStart, Color iEnd)
 	{
+		LastStartColor = LastStartColor == Color.white ? iStart : lineRenderer.startColor;
+		LastEndColor   = LastEndColor   == Color.white ? iEnd   : lineRenderer.endColor;
 		if (iStart != Color.white)
 		{
 			lineRenderer.startColor = iStart;
 			lineRenderer.material.SetColor("_StartColor", iStart);
 			Line_Manager._.Image_Ink_Value.material.SetColor("_StartColor", iStart);
+			Line_Manager._.Image_Ink_Fade_Value.material.SetColor("_StartColor", LastStartColor);
 			Line_Manager._.Image_brush_mask.material.SetColor("_StartColor", iStart);
 		}
 		if (iEnd != Color.white)
@@ -117,7 +120,11 @@ public class LineObj : MonoBehaviour
 			lineRenderer.endColor = iEnd;
 			lineRenderer.material.SetColor("_EndColor", iEnd);
 			Line_Manager._.Image_Ink_Value.material.SetColor("_EndColor", iEnd);
-			Line_Manager._.Image_brush_mask.material.SetColor("_StartColor", iEnd);
+			Line_Manager._.Image_Ink_Fade_Value.material.SetColor("_EndColor", LastEndColor);
+			Line_Manager._.Image_brush_mask.material.SetColor("_EndColor", iEnd);
 		}
 	}
+	public Color LastStartColor;
+	public Color LastEndColor;
+
 }

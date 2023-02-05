@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -568,6 +568,7 @@ MonoBehaviour:
   InkCostSpeed: 100
   AudioSource: {fileID: 145423524}
   Image_Ink_Value: {fileID: 569277463}
+  Image_Ink_Fade_Value: {fileID: 626011202}
   Image_brush_mask: {fileID: 208226842}
   Animator_Brush: {fileID: 426961178}
 --- !u!82 &145423524
@@ -1207,7 +1208,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: c05690f9e25f6f14bb6e980d09389f23, type: 2}
+  m_Material: {fileID: 2100000, guid: d7e49c8f8c2e3ae46897c38748dd984c, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -1304,7 +1305,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 2100000, guid: c05690f9e25f6f14bb6e980d09389f23, type: 2}
+  m_Material: {fileID: 2100000, guid: 95d16152ab703aa4da8da50ae2e3991d, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -3218,7 +3219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -256.0001, y: 0}
+  m_AnchoredPosition: {x: -256.00003, y: 0}
   m_SizeDelta: {x: -512, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1902494493
