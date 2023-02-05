@@ -95,6 +95,7 @@ MonoBehaviour:
   RectTransform: {fileID: 5728587046685632952}
   ID: 0
   Animator: {fileID: 6528608517887584207}
+  Special: {fileID: -2576807138875591332, guid: 1b005b11b9ad8c6478de615193fac562, type: 3}
   Image: {fileID: 5728587046685632957}
   AudioObject: {fileID: 8829436265233056983, guid: c3067d95c58c6f74d9cf434df1910f59, type: 3}
   LifeTime_Max: 6
@@ -105,6 +106,7 @@ MonoBehaviour:
   DestroySFX: {fileID: 8300000, guid: 8ea081eb5c4a06c48a983accc0ba4ea0, type: 3}
   EatSFX: {fileID: 8300000, guid: be5d13f618281114f87ea2ebf4884e74, type: 3}
   MaxRandomScale: 1.5
+  IsSpecial: 0
 --- !u!95 &6528608517887584207
 Animator:
   serializedVersion: 5
