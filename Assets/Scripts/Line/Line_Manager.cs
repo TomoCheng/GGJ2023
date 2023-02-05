@@ -57,19 +57,11 @@ public class Line_Manager : MonoBehaviour
             if (Vector3.Distance(StartV3, NowV3) > 0.5f)
             {
                 StartV3 = NowV3;
-				//¯à¶q´î¤Ö
+				//ï¿½ï¿½qï¿½ï¿½ï¿½
 				Line_Manager._.Power_Current -= Time.deltaTime * InkCostSpeed;
 				NowLine.AddNewPots(StartV3);
             }
 
-        }
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            var allLine = GetAllLine();
-            foreach (var i in allLine)
-            {
-                i.UpSize();
-            }
         }
 		Image_Ink_Value.fillAmount = Power_Current / Power_Max;
 	}
