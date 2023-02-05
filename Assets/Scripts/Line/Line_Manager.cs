@@ -68,8 +68,11 @@ public class Line_Manager : MonoBehaviour
 
         if (!Input.GetMouseButton(0))
         {
-            NowLine = null;
-        }
+			if(NowLine != null)
+			{
+				NowLine.OnOffManager(false);
+			}
+		}
 	}
 
     public void UpSizeAll()

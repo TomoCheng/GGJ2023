@@ -97,6 +97,11 @@ public class LineObj : MonoBehaviour
         }
         else
         {
+			if(Line_Manager._.NowLine != null)
+			{
+				Line_Manager._.NowLine.Nose.Play("Nose_Small");
+				Line_Manager._.NowLine.Tongue.gameObject.SetActive(false);
+			}
 			Line_Manager._.NowLine = null;
 		}
 		Line_Manager._.OnOffManager(OnOff);
