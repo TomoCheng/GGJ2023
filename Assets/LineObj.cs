@@ -43,7 +43,8 @@ public class LineObj : MonoBehaviour
                 //<產生新的分支物件>
                 NewLines.Add(Line_Manager._.CreatLine(LastPot2, NewPot, lineRenderer.endColor));
                 Des();
-                NewLines.Add(Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot, lineRenderer.endColor));
+				Nose.Play("Nose_Small");
+				NewLines.Add(Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot, lineRenderer.endColor));
             }
         }
         else
@@ -52,6 +53,7 @@ public class LineObj : MonoBehaviour
             Line_Manager._.UpSizeAll();
 			//Des();
 			OnOffManager(false);
+			Nose.Play("Nose_Small");
 		}
     }
 
@@ -77,7 +79,6 @@ public class LineObj : MonoBehaviour
     // 自我封印變成不可能在生長的狀態
     public void Des()
     {
-		Nose.Play("Nose_Small");
 		Button.gameObject.SetActive(false);
 	}
 
@@ -85,13 +86,12 @@ public class LineObj : MonoBehaviour
     {
 		if (OnOff)
         {
-			Nose.Play("Nose_Big");
 			Line_Manager._.NowLine = Line_Manager._.CreatLine(LastPot, LastPot, lineRenderer.endColor);
-            Des();
+			Line_Manager._.NowLine.Nose.Play("Nose_Big");
+			Des();
         }
         else
         {
-			Nose.Play("Nose_Small");
 			Line_Manager._.NowLine = null;
 		}
 		Line_Manager._.OnOffManager(OnOff);

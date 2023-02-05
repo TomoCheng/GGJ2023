@@ -32,16 +32,20 @@ public class GameManager : Manager_Base
 	{
 		SpawnManager.Initialize();
 		DirectionPositionMap.Add(Direction.TOP   , new Vector2(0, BackgroundSize * -1));
-		DirectionPositionMap.Add(Direction.BOTTOM, new Vector2(0, BackgroundSize      ));
+		DirectionPositionMap.Add(Direction.BOTTOM, new Vector2(0, BackgroundSize     ));
 		DirectionPositionMap.Add(Direction.LEFT  , new Vector2(BackgroundSize     , 0));
 		DirectionPositionMap.Add(Direction.RIGHT , new Vector2(BackgroundSize * -1, 0));
 		Group_Background.anchoredPosition = DirectionPositionMap[Direction.TOP];
 		CurrentGameState = GameState.TITLE;
+		BGM.clip = BGM_Title;
+		BGM.Play();
 		base.Initialize();
 	}
 	private async UniTask EnterGame()
 	{
 		CurrentGameState = GameState.GAME;
+		BGM.clip = BGM_Game;
+		BGM.Play();
 		var aStart  = Group_Background.anchoredPosition;
 		var aTarget = new Vector2(0, 0);
 
@@ -93,7 +97,10 @@ public class GameManager : Manager_Base
 		}
 	}
 	public SpawnManager SpawnManager;
+	public AudioSource  BGM;
 	public AudioObject AudioObject;
+	public AudioClip   BGM_Title;
+	public AudioClip   BGM_Game;
 	public AudioClip   ClickSFX;
 	public RectTransform Group_Background;
 	public float BackgroundSize = 1024.0f;

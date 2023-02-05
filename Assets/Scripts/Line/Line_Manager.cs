@@ -102,6 +102,7 @@ public class Line_Manager : MonoBehaviour
 			AudioSource.Play();
 			Image_Ink_Value.material.SetColor("_StartColor", NowLine.lineRenderer.startColor);
 			Image_Ink_Value.material.SetColor("_EndColor"  , NowLine.lineRenderer.endColor);
+			NowLine.Nose.Play("Nose_Big");
 		}
 		else
 		{
