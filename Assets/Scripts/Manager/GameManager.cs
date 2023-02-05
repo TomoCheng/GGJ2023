@@ -95,13 +95,27 @@ public class GameManager : Manager_Base
 		{
 			SceneManager.LoadScene("GameFlow");
 		}
+
+		if (CurrentGameState == GameState.TITLE)
+		{
+			Tick_PlayDogBGM += Time.deltaTime;
+			if (Tick_PlayDogBGM >= Period_PlayDogBGM)
+			{
+				BGM_Dog.Play();
+				Tick_PlayDogBGM = 0;
+			}
+		}
 	}
+	public float Tick_PlayDogBGM   = 15.0f;
+	public float Period_PlayDogBGM = 20.0f;
+
 	public SpawnManager SpawnManager;
 	public AudioSource  BGM;
-	public AudioObject AudioObject;
-	public AudioClip   BGM_Title;
-	public AudioClip   BGM_Game;
-	public AudioClip   ClickSFX;
+	public AudioSource  BGM_Dog;
+	public AudioObject  AudioObject;
+	public AudioClip    BGM_Title;
+	public AudioClip    BGM_Game;
+	public AudioClip    ClickSFX;
 	public RectTransform Group_Background;
 	public float BackgroundSize = 1024.0f;
 	private Dictionary<Direction, Vector2> DirectionPositionMap = new Dictionary<Direction, Vector2>();
@@ -109,4 +123,6 @@ public class GameManager : Manager_Base
 	public Line_Manager Line_Manager;
 	public GameObject   Group_Color;
 	public GameObject   Group_Brush;
+
+
 }
