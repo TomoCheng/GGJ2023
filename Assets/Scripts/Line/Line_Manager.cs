@@ -57,13 +57,14 @@ public class Line_Manager : MonoBehaviour
             if (Vector3.Distance(StartV3, NowV3) > 0.5f)
             {
                 StartV3 = NowV3;
-				//��q���
-				Line_Manager._.Power_Current -= Time.deltaTime * InkCostSpeed;
+				Power_Current -= Time.deltaTime * InkCostSpeed;
 				NowLine.AddNewPots(StartV3);
             }
 
         }
-		Image_Ink_Value.fillAmount = Power_Current / Power_Max;
+		var aAlpha = Power_Current / Power_Max;
+		Image_Ink_Value.fillAmount = aAlpha;
+		Animator_Brush.speed = 1.2f - aAlpha;
 	}
 
     public void UpSizeAll()
@@ -111,4 +112,5 @@ public class Line_Manager : MonoBehaviour
 	}
 
 	public Image Image_Ink_Value;
+	public Animator Animator_Brush;
 }

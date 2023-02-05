@@ -57,7 +57,8 @@ public class GameManager : Manager_Base
 		var aColor      = aColorChart.Color[UnityEngine.Random.Range(0, aColorChart.Color.Length)];
 		Line_Manager.gameObject.SetActive(true);
 		Line_Manager.MainLine.ChangeColor(aColor, aColor);
-		Group_Ink.SetActive(true);
+		Group_Color.SetActive(true);
+		Group_Brush.SetActive(true);
 	}
 	private void PlayClickSound()
 	{
@@ -99,5 +100,6 @@ public class GameManager : Manager_Base
 	private Dictionary<Direction, Vector2> DirectionPositionMap = new Dictionary<Direction, Vector2>();
 	public GameState CurrentGameState;
 	public Line_Manager Line_Manager;
-	public GameObject   Group_Ink;
+	public GameObject   Group_Color;
+	public GameObject   Group_Brush;
 }
