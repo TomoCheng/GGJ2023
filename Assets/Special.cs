@@ -8,7 +8,6 @@ public class Special : MonoBehaviour
 	public void SetColor(Color iColor)
 	{
 		Image_1.color = iColor;
-		Image_2.color = iColor;
 	}
     void Update()
     {
@@ -20,5 +19,4 @@ public class Special : MonoBehaviour
 	}
 	float Tick;
 	public Image Image_1;
-	public Image Image_2;
 }
