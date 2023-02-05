@@ -43,8 +43,8 @@ public class LineObj : MonoBehaviour
                 //<產生新的分支物件>
                 NewLines.Add(Line_Manager._.CreatLine(LastPot2, NewPot, lineRenderer.endColor));
                 Des();
-				Tongue.gameObject.SetActive(false);
 				Nose.Play("Nose_Small");
+				Tongue.gameObject.SetActive(false);
 				NewLines.Add(Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot, lineRenderer.endColor));
 				Line_Manager._.NowLine.Nose.Play("Nose_Big");
 				Line_Manager._.NowLine.Tongue.gameObject.SetActive(true);
@@ -83,8 +83,7 @@ public class LineObj : MonoBehaviour
     // 自我封印變成不可能在生長的狀態
     public void Des()
     {
-		//Button.gameObject.SetActive(false);
-		Tongue.gameObject.SetActive(false);
+		Button.gameObject.SetActive(false);
 	}
 
     public void OnOffManager(bool OnOff)
@@ -93,6 +92,7 @@ public class LineObj : MonoBehaviour
         {
 			Line_Manager._.NowLine = Line_Manager._.CreatLine(LastPot, LastPot, lineRenderer.endColor);
 			Line_Manager._.NowLine.Nose.Play("Nose_Big");
+			Line_Manager._.NowLine.Tongue.gameObject.SetActive(true);
 			Des();
         }
         else
