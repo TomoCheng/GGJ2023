@@ -84,6 +84,7 @@ public class LineObj : MonoBehaviour
     {
 		if (OnOff)
         {
+            Des();
             Line_Manager._.NowLine = Line_Manager._.CreatLine(LastPot, LastPot, lineRenderer.endColor);
         }
         else
