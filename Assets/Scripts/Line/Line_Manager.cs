@@ -65,6 +65,11 @@ public class Line_Manager : MonoBehaviour
 		var aAlpha = Power_Current / Power_Max;
 		Image_Ink_Value.fillAmount = aAlpha;
 		Animator_Brush.speed = 1.2f - aAlpha;
+
+        if (!Input.GetMouseButton(0))
+        {
+            NowLine = null;
+        }
 	}
 
     public void UpSizeAll()
