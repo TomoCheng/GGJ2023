@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Special : MonoBehaviour
 {
+	public void SetColor(Color iColor)
+	{
+		Image_1.color = iColor;
+		Image_2.color = iColor;
+	}
     void Update()
     {
 		Tick += Time.deltaTime;
@@ -13,4 +19,6 @@ public class Special : MonoBehaviour
 		}
 	}
 	float Tick;
+	public Image Image_1;
+	public Image Image_2;
 }

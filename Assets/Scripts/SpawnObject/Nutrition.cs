@@ -18,7 +18,7 @@ public class Nutrition : SpawnObject_Base
 
 		Animator.speed       = 0.2f;
 
-		IsSpecial = Random.Range(0, 100) <= 100;
+		IsSpecial = Random.Range(0, 100) <= 4;
 		base.Initialize(iID, iPosition);
 	}
 	public void SetSpeed(float iSpeed)
@@ -35,12 +35,14 @@ public class Nutrition : SpawnObject_Base
 		if (IsSpecial)
 		{
 			GameManager.GetInstance().BGM_Dog.Play();
-			Instantiate(Special, GameManager.GetInstance().Canvas);
+			Instantiate(Special, GameManager.GetInstance().Canvas).SetColor(Image.color);
 		}
 		else
 		{
 			var aAudioObject = Instantiate(AudioObject);
 			aAudioObject.SetClip(iIsEat ? EatSFX : DestroySFX);
+			var an = GameObject.Find("Image_Ink_Value_Fadeout").GetComponent<Animator>();
+			an.Play("Ink_Fadeout");
 		}
 		//Destroy(this.gameObject);
 	}
