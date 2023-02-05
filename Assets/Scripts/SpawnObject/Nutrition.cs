@@ -18,13 +18,14 @@ public class Nutrition : SpawnObject_Base
 
 		Animator.speed       = 0.2f;
 
-		IsSpecial = Random.Range(0, 100) <= 4;
+		IsSpecial = Random.Range(0, 100) <= 100;
 		base.Initialize(iID, iPosition);
 	}
 	public void SetSpeed(float iSpeed)
 	{
 		Animator.speed = iSpeed;
 	}
+	public Special Special;
 	private void DestroyNutrition(bool iIsEat)
 	{
 		if (IsDestroy) { return; }
@@ -34,6 +35,7 @@ public class Nutrition : SpawnObject_Base
 		if (IsSpecial)
 		{
 			GameManager.GetInstance().BGM_Dog.Play();
+			Instantiate(Special, GameManager.GetInstance().Canvas);
 		}
 		else
 		{
