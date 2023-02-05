@@ -100,11 +100,13 @@ public class LineObj : MonoBehaviour
 		{
 			lineRenderer.startColor = iStart.Value;
 			lineRenderer.material.SetColor("_StartColor", iStart.Value);
+			Line_Manager._.Image_Ink_Value.material.SetColor("_StartColor", iStart.Value);
 		}
 		if (iEnd.HasValue)
 		{
 			lineRenderer.endColor = iEnd.Value;
 			lineRenderer.material.SetColor("_EndColor", iEnd.Value);
+			Line_Manager._.Image_Ink_Value.material.SetColor("_EndColor", iEnd.Value);
 		}
 	}
 }
