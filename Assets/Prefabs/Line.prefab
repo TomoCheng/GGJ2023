@@ -350,6 +350,8 @@ MonoBehaviour:
   NewLines: []
   Nose: {fileID: 3432630140083538956}
   Tongue: {fileID: 1811638470279493616}
+  LastStartColor: {r: 1, g: 1, b: 1, a: 1}
+  LastEndColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!120 &7799299192512897601
 LineRenderer:
   serializedVersion: 2
