@@ -45,8 +45,9 @@ public class LineObj : MonoBehaviour
                 Des();
 				Nose.Play("Nose_Small");
 				NewLines.Add(Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot, lineRenderer.endColor));
-            }
-        }
+				Line_Manager._.NowLine.Nose.Play("Nose_Big");
+			}
+		}
         else
         {
             Line_Manager._.NowLine = null;
@@ -87,7 +88,6 @@ public class LineObj : MonoBehaviour
 		if (OnOff)
         {
 			Line_Manager._.NowLine = Line_Manager._.CreatLine(LastPot, LastPot, lineRenderer.endColor);
-			Line_Manager._.NowLine.Nose.Play("Nose_Big");
 			Des();
         }
         else
@@ -98,19 +98,19 @@ public class LineObj : MonoBehaviour
 	}
 	public Animator Nose;
 
-	public void ChangeColor(Color? iStart, Color? iEnd)
+	public void ChangeColor(Color iStart, Color iEnd)
 	{
-		if (iStart.HasValue)
+		if (iStart != Color.white)
 		{
-			lineRenderer.startColor = iStart.Value;
-			lineRenderer.material.SetColor("_StartColor", iStart.Value);
-			Line_Manager._.Image_Ink_Value.material.SetColor("_StartColor", iStart.Value);
+			lineRenderer.startColor = iStart;
+			lineRenderer.material.SetColor("_StartColor", iStart);
+			Line_Manager._.Image_Ink_Value.material.SetColor("_StartColor", iStart);
 		}
-		if (iEnd.HasValue)
+		if (iEnd != Color.white)
 		{
-			lineRenderer.endColor = iEnd.Value;
-			lineRenderer.material.SetColor("_EndColor", iEnd.Value);
-			Line_Manager._.Image_Ink_Value.material.SetColor("_EndColor", iEnd.Value);
+			lineRenderer.endColor = iEnd;
+			lineRenderer.material.SetColor("_EndColor", iEnd);
+			Line_Manager._.Image_Ink_Value.material.SetColor("_EndColor", iEnd);
 		}
 	}
 }

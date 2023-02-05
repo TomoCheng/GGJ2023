@@ -9,7 +9,7 @@ public class Nose : MonoBehaviour
 	void OnTriggerEnter2D(Collider2D iCollision)
 	{
 		var aColor = iCollision.GetComponent<Image>().color;
-		LineObj.ChangeColor(null, aColor);
+		LineObj.ChangeColor(Color.white, aColor);
 	}
 	public LineObj LineObj;
 }
