@@ -60,6 +60,7 @@ public class GameManager : Manager_Base
 		Line_Manager.MainLine.lineRenderer.endColor   = aColor;
 		Line_Manager.MainLine.lineRenderer.material.SetColor("_StartColor", aColor);
 		Line_Manager.MainLine.lineRenderer.material.SetColor("_EndColor"  , aColor);
+		Group_Ink.SetActive(true);
 	}
 	private void PlayClickSound()
 	{
@@ -101,4 +102,5 @@ public class GameManager : Manager_Base
 	private Dictionary<Direction, Vector2> DirectionPositionMap = new Dictionary<Direction, Vector2>();
 	public GameState CurrentGameState;
 	public Line_Manager Line_Manager;
+	public GameObject   Group_Ink;
 }

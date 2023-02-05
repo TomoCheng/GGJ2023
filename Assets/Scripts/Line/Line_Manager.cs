@@ -26,8 +26,9 @@ public class Line_Manager : MonoBehaviour
         }
     }
     public LineObj _NowLine;
-
-    public int Power = 10;
+	
+	public float Power_Max;
+	public float Power_Current;
 
     public float Max_X = 5;
     public float Min_X = -5;
@@ -37,12 +38,15 @@ public class Line_Manager : MonoBehaviour
     private void Awake()
     {
         _ = this;
-    }
+		Power_Max = Random.Range(7, 15);
+		Power_Current = Power_Max;
+	}
 
     void Start()
     {
     }
 
+	public float InkCostSpeed = 100.0f;
     void Update()
     {
         //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
@@ -53,7 +57,9 @@ public class Line_Manager : MonoBehaviour
             if (Vector3.Distance(StartV3, NowV3) > 0.5f)
             {
                 StartV3 = NowV3;
-                NowLine.AddNewPots(StartV3);
+				//¯à¶q´î¤Ö
+				Line_Manager._.Power_Current -= Time.deltaTime * InkCostSpeed;
+				NowLine.AddNewPots(StartV3);
             }
 
         }
@@ -65,9 +71,8 @@ public class Line_Manager : MonoBehaviour
                 i.UpSize();
             }
         }
-
-
-    }
+		Image_Ink_Value.fillAmount = Power_Current / Power_Max;
+	}
 
     public void UpSizeAll()
     {
@@ -84,10 +89,7 @@ public class Line_Manager : MonoBehaviour
         r.transform.position = from;
         r.lineRenderer.positionCount = 2;
         r.lineRenderer.SetPosition(1, to);
-		r.lineRenderer.startColor = iStarColor;
-		r.lineRenderer.endColor   = iStarColor;
-        r.lineRenderer.material.SetColor("_StartColor", iStarColor);
-        r.lineRenderer.material.SetColor("_EndColor"  , iStarColor);
+		r.ChangeColor(iStarColor, iStarColor);
 		return r;
     }
 
@@ -104,12 +106,15 @@ public class Line_Manager : MonoBehaviour
 	{
 		if (OnOff)
 		{
-			Power = Random.Range(3, 21);
 			AudioSource.Play();
 		}
 		else
 		{
 			AudioSource.Pause();
+			Power_Max = Random.Range(3, 21);
+			Power_Current = Power_Max;
 		}
 	}
+
+	public Image Image_Ink_Value;
 }

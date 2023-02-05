@@ -31,10 +31,8 @@ public class LineObj : MonoBehaviour
     {
         lineRenderer.positionCount++;
         lineRenderer.SetPosition(lineRenderer.positionCount - 1, Pot);
-        //能量減少
-        Line_Manager._.Power--;
         //能量數否足夠
-        if (Line_Manager._.Power > 0)
+        if (Line_Manager._.Power_Current > 0)
         {
             //是否產生分枝
             if (Random.Range(0, 11) == 0)
@@ -84,7 +82,6 @@ public class LineObj : MonoBehaviour
 
     public void OnOffManager(bool OnOff)
     {
-		Line_Manager._.OnOffManager(OnOff);
 		if (OnOff)
         {
             Line_Manager._.NowLine = this;
@@ -93,6 +90,21 @@ public class LineObj : MonoBehaviour
         {
             Line_Manager._.NowLine = null;
         }
-    }
+		Line_Manager._.OnOffManager(OnOff);
+	}
 
+
+	public void ChangeColor(Color? iStart, Color? iEnd)
+	{
+		if (iStart.HasValue)
+		{
+			lineRenderer.startColor = iStart.Value;
+			lineRenderer.material.SetColor("_StartColor", iStart.Value);
+		}
+		if (iEnd.HasValue)
+		{
+			lineRenderer.endColor = iEnd.Value;
+			lineRenderer.material.SetColor("_EndColor", iEnd.Value);
+		}
+	}
 }
