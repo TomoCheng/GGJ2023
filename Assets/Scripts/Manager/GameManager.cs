@@ -56,10 +56,7 @@ public class GameManager : Manager_Base
 		var aColorChart = GameSetting.GetInstance().ColorChartSetting.GetColorChart();
 		var aColor      = aColorChart.Color[UnityEngine.Random.Range(0, aColorChart.Color.Length)];
 		Line_Manager.gameObject.SetActive(true);
-		Line_Manager.MainLine.lineRenderer.startColor = aColor;
-		Line_Manager.MainLine.lineRenderer.endColor   = aColor;
-		Line_Manager.MainLine.lineRenderer.material.SetColor("_StartColor", aColor);
-		Line_Manager.MainLine.lineRenderer.material.SetColor("_EndColor"  , aColor);
+		Line_Manager.MainLine.ChangeColor(aColor, aColor);
 		Group_Ink.SetActive(true);
 	}
 	private void PlayClickSound()
