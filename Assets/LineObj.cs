@@ -77,22 +77,25 @@ public class LineObj : MonoBehaviour
     // 自我封印變成不可能在生長的狀態
     public void Des()
     {
-        Button.gameObject.SetActive(false);
+		Nose.Play("Nose_Small");
+		Button.gameObject.SetActive(false);
 	}
 
     public void OnOffManager(bool OnOff)
     {
 		if (OnOff)
         {
-            Line_Manager._.NowLine = Line_Manager._.CreatLine(LastPot, LastPot, lineRenderer.endColor);
-        }
+			Nose.Play("Nose_Big");
+			Line_Manager._.NowLine = Line_Manager._.CreatLine(LastPot, LastPot, lineRenderer.endColor);
+		}
         else
         {
-            Line_Manager._.NowLine = null;
-        }
+			Nose.Play("Nose_Small");
+			Line_Manager._.NowLine = null;
+		}
 		Line_Manager._.OnOffManager(OnOff);
 	}
-
+	public Animator Nose;
 
 	public void ChangeColor(Color? iStart, Color? iEnd)
 	{
