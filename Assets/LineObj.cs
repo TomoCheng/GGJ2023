@@ -52,8 +52,9 @@ public class LineObj : MonoBehaviour
         {
             Line_Manager._.NowLine = null;
             Line_Manager._.UpSizeAll();
-            //Des();
-        }
+			//Des();
+			OnOffManager(false);
+		}
     }
 
     //抓到底下所有的線分支
@@ -79,13 +80,13 @@ public class LineObj : MonoBehaviour
     public void Des()
     {
         Button.gameObject.SetActive(false);
-    }
+	}
 
     public void OnOffManager(bool OnOff)
     {
-        if (OnOff)
+		Line_Manager._.OnOffManager(OnOff);
+		if (OnOff)
         {
-            Line_Manager._.Power = Random.Range(3, 21);
             Line_Manager._.NowLine = this;
         }
         else

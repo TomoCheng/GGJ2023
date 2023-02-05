@@ -3,7 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class GameManager : Manager_Base
 {
@@ -53,7 +53,13 @@ public class GameManager : Manager_Base
 			Group_Background.anchoredPosition = Vector2.Lerp(aStart, aTarget, aAlpha);
 			await UniTask.Yield();
 		}
+		var aColorChart = GameSetting.GetInstance().ColorChartSetting.GetColorChart();
+		var aColor      = aColorChart.Color[UnityEngine.Random.Range(0, aColorChart.Color.Length)];
 		Line_Manager.gameObject.SetActive(true);
+		Line_Manager.MainLine.lineRenderer.startColor = aColor;
+		Line_Manager.MainLine.lineRenderer.endColor   = aColor;
+		Line_Manager.MainLine.lineRenderer.material.SetColor("_StartColor", aColor);
+		Line_Manager.MainLine.lineRenderer.material.SetColor("_EndColor"  , aColor);
 	}
 	private void PlayClickSound()
 	{
@@ -77,6 +83,14 @@ public class GameManager : Manager_Base
 			PlayClickSound();
 			System.Random rnd = new System.Random(Guid.NewGuid().GetHashCode());
 			ScreenCapture.CaptureScreenshot(Application.dataPath + "/ScreenShot_" + DateTime.Now.ToString("yyMMdd") + "_" + rnd.GetHashCode() + ".png");
+		}
+		if (Input.GetKeyDown(KeyCode.Escape))
+		{
+			Application.Quit();
+		}
+		if (Input.GetKeyDown(KeyCode.R))
+		{
+			SceneManager.LoadScene("GameFlow");
 		}
 	}
 	public SpawnManager SpawnManager;

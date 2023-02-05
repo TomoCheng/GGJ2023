@@ -85,6 +85,9 @@ public class Line_Manager : MonoBehaviour
         r.lineRenderer.positionCount = 2;
         r.lineRenderer.SetPosition(1, to);
 		r.lineRenderer.startColor = iStarColor;
+		r.lineRenderer.endColor   = iStarColor;
+        r.lineRenderer.material.SetColor("_StartColor", iStarColor);
+        r.lineRenderer.material.SetColor("_EndColor"  , iStarColor);
 		return r;
     }
 
@@ -95,4 +98,18 @@ public class Line_Manager : MonoBehaviour
 
         return r;
     }
+
+	public AudioSource AudioSource;
+	public void OnOffManager(bool OnOff)
+	{
+		if (OnOff)
+		{
+			Power = Random.Range(3, 21);
+			AudioSource.Play();
+		}
+		else
+		{
+			AudioSource.Pause();
+		}
+	}
 }
