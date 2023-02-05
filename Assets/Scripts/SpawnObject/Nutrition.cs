@@ -17,6 +17,8 @@ public class Nutrition : SpawnObject_Base
 		transform.localScale = new Vector3(aRandomScale, aRandomScale, aRandomScale);
 
 		Animator.speed       = 0.2f;
+
+		IsSpecial = Random.Range(0, 100) <= 4;
 		base.Initialize(iID, iPosition);
 	}
 	public void SetSpeed(float iSpeed)
@@ -27,10 +29,17 @@ public class Nutrition : SpawnObject_Base
 	{
 		if (IsDestroy) { return; }
 		SetSpeed(1.0f);
-		var aAudioObject = Instantiate(AudioObject);
-		aAudioObject.SetClip(iIsEat ? EatSFX : DestroySFX);
 		IsDestroy = true;
 		Animator.Play(iIsEat ? "Nutrition_Touched" : "Nutrition_Disappear");
+		if (IsSpecial)
+		{
+			GameManager.GetInstance().BGM_Dog.Play();
+		}
+		else
+		{
+			var aAudioObject = Instantiate(AudioObject);
+			aAudioObject.SetClip(iIsEat ? EatSFX : DestroySFX);
+		}
 		//Destroy(this.gameObject);
 	}
 	private void Update()
@@ -83,4 +92,6 @@ public class Nutrition : SpawnObject_Base
 	public AudioClip   EatSFX;
 
 	public float MaxRandomScale = 1.5f;
+
+	public bool IsSpecial;
 }
