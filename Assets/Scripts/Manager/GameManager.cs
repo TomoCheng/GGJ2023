@@ -63,6 +63,7 @@ public class GameManager : Manager_Base
 		Line_Manager.MainLine.ChangeColor(aColor, aColor);
 		Group_Color.SetActive(true);
 		Group_Brush.SetActive(true);
+		Group_Text .SetActive(true);
 	}
 	private void PlayClickSound()
 	{
@@ -123,6 +124,5 @@ public class GameManager : Manager_Base
 	public Line_Manager Line_Manager;
 	public GameObject   Group_Color;
 	public GameObject   Group_Brush;
-
-
+	public GameObject   Group_Text;
 }

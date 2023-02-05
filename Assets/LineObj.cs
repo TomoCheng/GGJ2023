@@ -43,9 +43,11 @@ public class LineObj : MonoBehaviour
                 //<產生新的分支物件>
                 NewLines.Add(Line_Manager._.CreatLine(LastPot2, NewPot, lineRenderer.endColor));
                 Des();
+				Tongue.gameObject.SetActive(false);
 				Nose.Play("Nose_Small");
 				NewLines.Add(Line_Manager._.NowLine = Line_Manager._.CreatLine(Pot, Pot, lineRenderer.endColor));
 				Line_Manager._.NowLine.Nose.Play("Nose_Big");
+				Line_Manager._.NowLine.Tongue.gameObject.SetActive(true);
 			}
 		}
         else
@@ -55,6 +57,7 @@ public class LineObj : MonoBehaviour
 			//Des();
 			OnOffManager(false);
 			Nose.Play("Nose_Small");
+			Tongue.gameObject.SetActive(false);
 		}
     }
 
@@ -80,7 +83,8 @@ public class LineObj : MonoBehaviour
     // 自我封印變成不可能在生長的狀態
     public void Des()
     {
-		Button.gameObject.SetActive(false);
+		//Button.gameObject.SetActive(false);
+		Tongue.gameObject.SetActive(false);
 	}
 
     public void OnOffManager(bool OnOff)
@@ -88,6 +92,7 @@ public class LineObj : MonoBehaviour
 		if (OnOff)
         {
 			Line_Manager._.NowLine = Line_Manager._.CreatLine(LastPot, LastPot, lineRenderer.endColor);
+			Line_Manager._.NowLine.Nose.Play("Nose_Big");
 			Des();
         }
         else
@@ -96,8 +101,8 @@ public class LineObj : MonoBehaviour
 		}
 		Line_Manager._.OnOffManager(OnOff);
 	}
-	public Animator Nose;
-
+	public Animator  Nose;
+	public Transform Tongue;
 	public void ChangeColor(Color iStart, Color iEnd)
 	{
 		if (iStart != Color.white)
@@ -105,12 +110,14 @@ public class LineObj : MonoBehaviour
 			lineRenderer.startColor = iStart;
 			lineRenderer.material.SetColor("_StartColor", iStart);
 			Line_Manager._.Image_Ink_Value.material.SetColor("_StartColor", iStart);
+			Line_Manager._.Image_brush_mask.material.SetColor("_StartColor", iStart);
 		}
 		if (iEnd != Color.white)
 		{
 			lineRenderer.endColor = iEnd;
 			lineRenderer.material.SetColor("_EndColor", iEnd);
 			Line_Manager._.Image_Ink_Value.material.SetColor("_EndColor", iEnd);
+			Line_Manager._.Image_brush_mask.material.SetColor("_StartColor", iEnd);
 		}
 	}
 }
