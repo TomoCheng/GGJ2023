@@ -87,7 +87,8 @@ public class LineObj : MonoBehaviour
         {
 			Nose.Play("Nose_Big");
 			Line_Manager._.NowLine = Line_Manager._.CreatLine(LastPot, LastPot, lineRenderer.endColor);
-		}
+            Des();
+        }
         else
         {
 			Nose.Play("Nose_Small");
