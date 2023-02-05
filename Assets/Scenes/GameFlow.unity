@@ -488,6 +488,7 @@ MonoBehaviour:
   Group_Color: {fileID: 875769573}
   Group_Brush: {fileID: 426961175}
   Group_Text: {fileID: 750162049}
+  Canvas: {fileID: 1385557289}
 --- !u!4 &121312258
 Transform:
   m_ObjectHideFlags: 0
