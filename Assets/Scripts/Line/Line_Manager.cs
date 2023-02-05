@@ -29,6 +29,11 @@ public class Line_Manager : MonoBehaviour
 
     public int Power = 10;
 
+    public float Max_X = 5;
+    public float Min_X = -5;
+    public float Max_Y = 6;
+    public float Min_Y = -4;
+
     private void Awake()
     {
         _ = this;
@@ -40,9 +45,11 @@ public class Line_Manager : MonoBehaviour
 
     void Update()
     {
+        //print(Camera.main.ScreenToWorldPoint(Input.mousePosition));
         if (NowLine != null)
         {
             Vector3 NowV3 = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            NowV3 = new Vector3(Mathf.Clamp(NowV3.x, Min_X, Max_X), Mathf.Clamp(NowV3.y, Min_Y, Max_Y));
             if (Vector3.Distance(StartV3, NowV3) > 0.5f)
             {
                 StartV3 = NowV3;
