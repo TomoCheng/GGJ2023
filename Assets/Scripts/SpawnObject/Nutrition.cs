@@ -25,6 +25,7 @@ public class Nutrition : SpawnObject_Base
 	{
 		Animator.speed = iSpeed;
 	}
+	public Special Special;
 	private void DestroyNutrition(bool iIsEat)
 	{
 		if (IsDestroy) { return; }
@@ -34,11 +35,14 @@ public class Nutrition : SpawnObject_Base
 		if (IsSpecial)
 		{
 			GameManager.GetInstance().BGM_Dog.Play();
+			Instantiate(Special, GameManager.GetInstance().Canvas).SetColor(Image.color);
 		}
 		else
 		{
 			var aAudioObject = Instantiate(AudioObject);
 			aAudioObject.SetClip(iIsEat ? EatSFX : DestroySFX);
+			var an = GameObject.Find("Image_Ink_Value_Fadeout").GetComponent<Animator>();
+			an.Play("Ink_Fadeout");
 		}
 		//Destroy(this.gameObject);
 	}

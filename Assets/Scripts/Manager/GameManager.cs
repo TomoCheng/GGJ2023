@@ -125,4 +125,5 @@ public class GameManager : Manager_Base
 	public GameObject   Group_Color;
 	public GameObject   Group_Brush;
 	public GameObject   Group_Text;
+	public Transform    Canvas;
 }
